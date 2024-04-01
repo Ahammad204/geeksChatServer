@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
+const userRoutes = require("./Routers/userRouter");
 
 //Middleware
 app.use(cors());
@@ -26,6 +27,8 @@ connectDB();
 app.get("/", (req, res) => {
   res.send("GeekChat is Running....");
 });
+
+app.use("/user", userRoutes);
 
 //For knowing which port we are use
 app.listen(port, () => {
