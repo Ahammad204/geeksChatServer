@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
 const userRoutes = require("./Routers/userRouter");
+const chatRoutes = require("./Routers/chatRouter");
+const messageRoutes = require("./Routers/messageRouter");
 
 //Middleware
 app.use(cors());
@@ -29,6 +31,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoutes);
+app.use("/chat", chatRoutes);
+app.use("/message", messageRoutes);
 
 //For knowing which port we are use
 app.listen(port, () => {
